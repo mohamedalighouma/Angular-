@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+	"buildProduction": "ng build --prod --base-href /demo-angular-8/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
