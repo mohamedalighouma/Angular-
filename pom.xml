@@ -1,0 +1,62 @@
+<build>
+<finalName>demo-angular-8</finalName>
+    <plugins>
+    <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.6</version>
+
+            <configuration>
+                <workingDirectory>src/main/frontend</workingDirectory>
+            </configuration>
+
+            <executions>
+
+                <execution>
+                    <id>install-node-and-npm</id>
+                    <goals>
+                        <goal>install-node-and-npm</goal>
+                    </goals>
+                    <configuration>
+                        <nodeVersion>v10.16.1</nodeVersion>
+                    </configuration>
+                </execution>
+
+                <execution>
+                    <id>npm install</id>
+                    <goals>
+                        <goal>npm</goal>
+                    </goals>
+                    <configuration>
+                        <arguments>install</arguments>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>npm build</id>
+                    <goals>
+                        <goal>npm</goal>
+                    </goals>
+                    <configuration>
+                        <arguments>run buildProduction</arguments>
+                    </configuration>
+                    <phase>generate-resources</phase>
+                </execution>
+            </executions>
+    </plugin>
+    <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.2</version>
+        <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+
+            <!-- Add frontend folder to war package -->
+            <webResources>
+                <resource>
+                    <directory>src/main/frontend/dist/frontend</directory>
+                </resource>
+            </webResources>
+
+        </configuration>
+    </plugin>
+    </plugins>
+</build>
